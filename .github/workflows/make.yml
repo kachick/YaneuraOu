@@ -2,9 +2,9 @@
 name: Make CI (for Ubuntu Linux)
 
 on:
-  push:
-    branches:
-      - "**"
+  # push:
+  #   branches:
+  #     - "**"
   pull_request:
     branches:
       - "**"
@@ -20,10 +20,10 @@ jobs:
       matrix:
         edition:
           - YANEURAOU_ENGINE_NNUE
-          - YANEURAOU_ENGINE_MATERIAL
-          - YANEURAOU_MATE_ENGINE
-          - TANUKI_MATE_ENGINE
-          - USER_ENGINE
+          # - YANEURAOU_ENGINE_MATERIAL
+          # - YANEURAOU_MATE_ENGINE
+          # - TANUKI_MATE_ENGINE
+          # - USER_ENGINE
         compiler:
           - clang++-15
           # - g++-10
@@ -170,7 +170,7 @@ jobs:
       - name: make
         run: ./main/script/build.sh -e ${{ matrix.edition }} -c ${{ matrix.compiler }} -t ${{ matrix.target }} -a ${{ matrix.archcpu }}
 
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: build-linux_${{ github.run_number }}_${{ matrix.edition }}_${{ matrix.compiler }}_${{ matrix.target }}_${{ matrix.archcpu }}_${{ github.sha }}
-      #     path: ./main/build/**/**/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-linux_${{ github.run_number }}_${{ matrix.edition }}_${{ matrix.compiler }}_${{ matrix.target }}_${{ matrix.archcpu }}_${{ github.sha }}
+          path: ./main/build/**/**/*
