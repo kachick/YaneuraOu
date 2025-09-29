@@ -2,9 +2,9 @@
 name: Make CI (DeepLearning for Ubuntu Linux)
 
 on:
-  push:
-    branches:
-      - "**"
+  # push:
+  #   branches:
+  #     - "**"
   pull_request:
     branches:
       - "**"
